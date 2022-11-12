@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from "./components/Navbar";
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
+import Footer from "./components/Footer";
 
 const App = () => {
     return (
@@ -10,6 +11,7 @@ const App = () => {
             <BrowserRouter>
                 <Navbar/>
                 <AppRouter/>
+                <Footer/>
             </BrowserRouter>
 
 

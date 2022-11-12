@@ -1,15 +1,11 @@
 import React from 'react';
+import {Container} from "react-bootstrap";
 
 const Login = () => {
     return (
-        <div>
-            loginasdasd
-            asd
-            asd
-            asd
-            asd
-
-        </div>
+        <Container className={"d-flex justify-content-center align-items-center"} style={{minHeight: "72.4vh"}}>
+            AUTH
+        </Container>
     );
 };
 
