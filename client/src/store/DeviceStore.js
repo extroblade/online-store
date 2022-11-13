@@ -1,23 +1,39 @@
 import {makeAutoObservable} from "mobx";
+const link = "https://sun9-61.userapi.com/impg/k8G6XLhIhWwzSuLYSsPz23sv2e0NdDAjzSasdA/kiDxTsSBdko.jpg?size=1080x907&quality=95&sign=42ff6a5fdd60a42588e5aaf9a1353251&type=album"
 
 export default class DeviceStore {
     constructor() {
         this._types = [
-            {id:1, name: 'Holod'},
-            {id:2, name: 'Smart'},
+            {id:0, name: 'All'},
+            {id:1, name: 'Fridges'},
+            {id:2, name: 'Smartphones'},
+            {id:3, name: 'TVs'},
+            {id:4, name: 'Laptops'},
 
         ]
         this._brands = [
-            {id:1, name: 'Samsu'},
-            {id:2, name: 'Aple'},
+            {id:1, name: 'Samsung'},
+            {id:2, name: 'Apple'},
         ]
 
         this._devices = [
-            {id:1, name: 'Iphon 12 pro', price: 25000, rating: 5, img: 'vk.com'},
-            {id:2, name: 'Iphon 12 pro', price: 25000, rating: 5, img: 'vk.com'},
-            {id:3, name: 'Iphon 12 pro', price: 25000, rating: 5, img: 'vk.com'},
-            {id:4, name: 'Iphon 12 pro', price: 25000, rating: 5, img: 'vk.com'},
+            {id:1, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:2, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:3, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:4, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
+
         ]
+
+        this._selectedType = {}
+
         makeAutoObservable(this)
     }
 
@@ -33,6 +49,10 @@ export default class DeviceStore {
         this._devices = devices
     }
 
+    setSelectedType(type){
+        this._selectedType = type
+    }
+
     get types(){
         return this._types
     }
@@ -43,6 +63,10 @@ export default class DeviceStore {
 
     get devices(){
         return this._devices
+    }
+
+    get selectedType(){
+        return this._selectedType
     }
 
 }
