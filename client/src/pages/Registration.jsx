@@ -1,8 +1,28 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {observer} from "mobx-react-lite";
-import {LOGIN_ROUTE} from "../utils/consts";
+import {LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {registration} from "../http/userAPI";
+import {Context} from "../index";
+import {useNavigate} from "react-router";
 
 const Registration = observer(() => {
+    const navigate = useNavigate()
+    const {user} = useContext(Context)
+    const click = async () => {
+        try{
+            let data = await registration(email, password)
+            user.setUser(user);
+            user.setIsAuth(true)
+            navigate(SHOP_ROUTE)
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+
+    }
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <section className="vh-100">
             <div className="container h-100">
@@ -25,7 +45,7 @@ const Registration = observer(() => {
 
                                         <form className="mx-1 mx-md-4">
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
+                                            <div className="d-flex flex-row align-items-center mb-3">
                                                 <i className="fas fa-user fa-lg fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <input
@@ -37,7 +57,7 @@ const Registration = observer(() => {
                                                 </div>
                                             </div>
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
+                                            <div className="d-flex flex-row align-items-center mb-3">
                                                 <i className="fas fa-envelope fa-lg  fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <input
@@ -45,11 +65,13 @@ const Registration = observer(() => {
                                                         id="form3Example3c"
                                                         className="form-control"
                                                         placeholder={"Your Email"}
+                                                        value = {email}
+                                                        onChange={e => setEmail(e.target.value)}
                                                     />
                                                 </div>
                                             </div>
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
+                                            <div className="d-flex flex-row align-items-center mb-3">
                                                 <i className="fas fa-lock fa-lg  fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <input
@@ -57,21 +79,25 @@ const Registration = observer(() => {
                                                         id="form3Example4c"
                                                         className="form-control"
                                                         placeholder={"Password"}
+                                                        value = {password}
+                                                        onChange={e => setPassword(e.target.value)}
+
                                                     />
                                                 </div>
                                             </div>
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
-                                                <i className="fas fa-key fa-lg  fa-fw"></i>
-                                                <div className="form-outline flex-fill mb-0">
-                                                    <input
-                                                        type="password"
-                                                        id="form3Example4cd"
-                                                        className="form-control"
-                                                        placeholder={"Repeat your password"}
-                                                    />
-                                                </div>
-                                            </div>
+                                            {/*<div className="d-flex flex-row align-items-center mb-3">*/}
+                                            {/*    <i className="fas fa-key fa-lg  fa-fw"></i>*/}
+                                            {/*    <div className="form-outline flex-fill mb-0">*/}
+                                            {/*        <input*/}
+                                            {/*            type="password"*/}
+                                            {/*            id="form3Example4cd"*/}
+                                            {/*            className="form-control"*/}
+                                            {/*            placeholder={"Repeat your password"}*/}
+
+                                            {/*        />*/}
+                                            {/*    </div>*/}
+                                            {/*</div>*/}
 
                                             <div className="form-check d-flex justify-content-center mb-5">
                                                 <input className="form-check-input me-2" type="checkbox" value=""
@@ -82,7 +108,12 @@ const Registration = observer(() => {
                                             </div>
 
                                             <div className="d-grid gap-2" >
-                                                <button type="button" className="btn btn-primary btn-lg">Register
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-primary btn-lg"
+                                                    onClick={() => click()}
+                                                >
+                                                    Register
                                                 </button>
                                             </div>
 

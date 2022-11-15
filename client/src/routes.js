@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 export const authRoutes = [
     {path: ADMIN_ROUTE, element: <Admin/>, exact: true},
     {path: BASKET_ROUTE, element: <Basket/>, exact: true},
+    {path: SHOP_ROUTE, element: <Shop/>, exact: true},
+    {path: DEVICE_ROUTE+"/:id", element: <DevicePage/>, exact: true},
     {path: "*", element: <Navigate to="/" replace />, exact: true},
 ]
 
@@ -17,6 +19,8 @@ export const publicRoutes = [
     {path: SHOP_ROUTE, element: <Shop/>, exact: true},
     {path: LOGIN_ROUTE, element: <Login/>, exact: true},
     {path: REGISTRATION_ROUTE, element: <Registration/>, exact: true},
-    {path: DEVICE_ROUTE + '/:id' , element: <DevicePage/>, exact: true},
+    {path: DEVICE_ROUTE+"/:id", element: <DevicePage/>, exact: true},
     {path: "*", element: <Navigate to="/" replace />, exact: true},
+
 ]
+// + '/:id'

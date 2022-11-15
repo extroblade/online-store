@@ -1,31 +1,36 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
+import {DEVICE_ROUTE} from "../utils/consts";
+import {fetchBrands, fetchDevices, fetchTypes} from "../http/deviceAPI";
 
 const Items = observer(() => {
     const {device} = useContext(Context)
     return (
-        <div className={"d-flex flex-row mb-3 flex-wrap"}>
+        <div className={"d-flex flex-row mb-3 flex-wrap"} >
             {device.devices.map(device =>
-                <div className="card me-2 mb-2" style={{width: "12rem"}} key={device.id}>
-                    <img src={device.img} className="card-img-top" alt="Device"/>
+                <div className="card me-3 mb-3" style={{width: "12rem"}} key={device.id}>
+                    <a href={DEVICE_ROUTE+'/'+device.id} style={{textDecoration: "none", color: "black"}}>
+                        <img
+                            src={process.env.REACT_APP_API_URL+device.img}
+                            className="card-img-top m-2"
+                            alt="Device"
+                            style={{height: "180px", width: "180px"}}
+                        />
                         <div className="card-body">
-                            <a href={"#"} className={'text-decoration-none  '}>
+                            <div className={'text-decoration-none text-primary'}>
                                 <h5 className="card-title mb-0">
-                                    {device.name} Brand + Device
+                                     {device.name} {/* change to name*/}
                                 </h5>
-                            </a>
+                            </div>
                             <div className={"d-flex flex-row"}>
                                 <p className="card-text">Type +   rating: {device.rating}</p>
-
                             </div>
-
-
                         </div>
-
+                    </a>
                 </div>
-                )}
 
+            )}
         </div>
     );
 });

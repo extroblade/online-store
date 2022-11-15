@@ -1,44 +1,32 @@
 import {makeAutoObservable} from "mobx";
-const link = "https://sun9-61.userapi.com/impg/k8G6XLhIhWwzSuLYSsPz23sv2e0NdDAjzSasdA/kiDxTsSBdko.jpg?size=1080x907&quality=95&sign=42ff6a5fdd60a42588e5aaf9a1353251&type=album"
 
 export default class DeviceStore {
     constructor() {
-        this._types = [
-            {id:0, name: 'All'},
-            {id:1, name: 'Fridges'},
-            {id:2, name: 'Smartphones'},
-            {id:3, name: 'TVs'},
-            {id:4, name: 'Laptops'},
-
-        ]
-        this._brands = [
-            {id:1, name: 'Samsung'},
-            {id:2, name: 'Apple'},
-        ]
-
-        this._devices = [
-            {id:1, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:2, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:3, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:4, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-            {id:5, name: 'Iphone 12 pro', price: 25000, rating: 5, img: link},
-
-        ]
-
+        this._types = []
+        this._brands = []
+        this._devices = []
         this._selectedType = {}
-
+        this._selectedBrand = {}
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 5
         makeAutoObservable(this)
     }
 
     setTypes(types){
         this._types = types
+    }
+
+    setPage(page){
+        this._page = page
+    }
+
+    setTotalCount(count){
+        this._totalCount = count
+    }
+
+    setLimit(limit){
+        this._limit = limit
     }
 
     setBrands(brands){
@@ -50,7 +38,12 @@ export default class DeviceStore {
     }
 
     setSelectedType(type){
+        this.setPage(1)
         this._selectedType = type
+    }
+    setSelectedBrand(brand){
+        this.setPage(1)
+        this._selectedBrand = brand
     }
 
     get types(){
@@ -67,6 +60,22 @@ export default class DeviceStore {
 
     get selectedType(){
         return this._selectedType
+    }
+
+    get selectedBrand(){
+        return this._selectedBrand
+    }
+
+    get page(){
+        return this._page
+    }
+
+    get totalCount(){
+        return this._totalCount
+    }
+
+    get limit(){
+        return this._limit
     }
 
 }

@@ -1,21 +1,28 @@
 import React, {useContext} from 'react';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
+import {Pagination} from "react-bootstrap";
 
 const PagesNum = observer(() => {
     const {device} = useContext(Context)
+    const pageCount = Math.ceil(device.totalCount / device.limit)
+    const pages = []
+
+    for (let i = 0; i < pageCount ; i++) {
+        pages.push(i+1)
+    }
     return (
-        <div className={"mx-2 "}>
-            <nav aria-label="Page navigation example" className={""}>
-                <ul className="pagination mx-10">
-                    <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-        </div>
+        <Pagination style={{marginTop: "3vh", marginLeft: "19vw"}}>
+            {pages.map(page =>
+                <Pagination.Item
+                    key={page}
+                    active={device.page === page}
+                    onClick={() => device.setPage(page)}
+                >
+                    {page}
+                </Pagination.Item>
+            )}
+        </Pagination>
     );
 });
 

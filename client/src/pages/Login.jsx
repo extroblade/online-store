@@ -1,8 +1,28 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {observer} from "mobx-react-lite";
-import {REGISTRATION_ROUTE} from "../utils/consts";
+import {REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {login} from "../http/userAPI";
+import {Context} from "../index";
+import {useNavigate} from "react-router";
+
 
 const Login = observer(() => {
+    const navigate = useNavigate()
+    const {user} = useContext(Context)
+    const click = async () => {
+        try{
+            let data = await login(email, password)
+            user.setUser(user);
+            user.setIsAuth(true)
+            navigate(SHOP_ROUTE)
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+    }
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <section style={{height: "95vh"}}>
             <div className="container h-100">
@@ -25,7 +45,7 @@ const Login = observer(() => {
 
                                         <form className="mx-5 mx-md-5 ">
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
+                                            <div className="d-flex flex-row align-items-center mb-2">
                                                 <i className="fas"></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <input
@@ -33,11 +53,13 @@ const Login = observer(() => {
                                                         id="form3Example3c"
                                                         className="form-control"
                                                         placeholder={"Your Email"}
+                                                        value = {email}
+                                                        onChange={e => setEmail(e.target.value)}
                                                     />
                                                 </div>
                                             </div>
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
+                                            <div className="d-flex flex-row align-items-center mb-3">
                                                 <i className="fas "></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <input
@@ -45,13 +67,20 @@ const Login = observer(() => {
                                                         id="form3Example4c"
                                                         className="form-control"
                                                         placeholder={"Password"}
+                                                        value = {password}
+                                                        onChange={e => setPassword(e.target.value)}
                                                     />
                                                 </div>
                                             </div>
 
 
                                             <div className="d-grid gap-2" >
-                                                <button type="button" className="btn btn-primary btn-lg ">Login
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-primary btn-lg"
+                                                    onClick={() => click()}
+                                                >
+                                                    Login
                                                 </button>
                                             </div>
 
