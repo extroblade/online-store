@@ -2,7 +2,6 @@ import React, {useContext, useEffect} from 'react';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {DEVICE_ROUTE} from "../utils/consts";
-import {fetchBrands, fetchDevices, fetchTypes} from "../http/deviceAPI";
 
 const Items = observer(() => {
     const {device} = useContext(Context)

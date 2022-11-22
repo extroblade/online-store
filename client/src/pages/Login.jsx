@@ -4,6 +4,7 @@ import {REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {login} from "../http/userAPI";
 import {Context} from "../index";
 import {useNavigate} from "react-router";
+import {Spinner} from "react-bootstrap";
 
 
 const Login = observer(() => {

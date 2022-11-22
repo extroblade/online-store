@@ -21,6 +21,14 @@ const App = observer(() => {
         }).finally( () => setLoading(false))
     }, [])
 
+    useEffect(() => {
+
+        check().then(() => {
+            user.setUser(true)
+            user.setIsAuth(true)
+        }).finally( () => setLoading(false))
+    }, [])
+
     if(loading){
         return <Spinner animation={"grow"} className={"d-flex align-items-center justify-content-center"}/>
     }
@@ -37,5 +45,3 @@ const App = observer(() => {
 });
 
 export default App;
-
-// style={{backgroundColor: "#31333b"}}

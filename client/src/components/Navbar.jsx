@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Context} from "../index";
-import {ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {observer} from "mobx-react-lite";
 import {useNavigate} from "react-router";
 
@@ -12,7 +12,7 @@ const Navbar = observer(() => {
 
     const logout = () => {
         if (window.confirm("Are you sure?")){
-            user.setUser({})
+            user.setUser(null)
             user.setIsAuth(false)
             navigate(SHOP_ROUTE)
         }
@@ -53,7 +53,9 @@ const Navbar = observer(() => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <div className="navbar-nav" style={{marginLeft: "auto"}}>
                             <a className="nav-link" href={LOGIN_ROUTE}>Log in</a>
+                            <a className="nav-link" href={REGISTRATION_ROUTE}>Sign up</a>
                         </div>
+
                     </div>
 
                 }
