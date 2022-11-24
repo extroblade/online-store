@@ -12,27 +12,60 @@ const Admin = () => {
         <div className={"d-flex card align-items-center justify-content-center"} style={{height: "90vh"}} >
             <div className={""}>
                 <div className="d-flex flex-column align-items-center justify-content-center" >
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setTypeVisible(true)}
-                    >
-                        Add type
-                    </Button>
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setBrandVisible(true)}
-                    >
-                        Add brand
-                    </Button>
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setDeviceVisible(true)}
-                    >
-                        Add device
-                    </Button>
+                    <div className={'d-flex'}>
+                        <Button
+                            className="btn btn-primary m-3 p-4"
+                            style={{width: "300px"}}
+                            onClick={() => setTypeVisible(true)}
+                        >
+                            Add type
+                        </Button>
+
+                        <Button
+                            className="btn btn-primary m-3 p-4"
+                            style={{width: "300px"}}
+                            onClick={() => setTypeVisible(true)}
+                        >
+                            Delete type
+                        </Button>
+                    </div>
+
+                    <div className={'d-flex'}>
+                        <Button
+                            className="btn btn-primary m-3 p-4"
+                            style={{width: "300px"}}
+                            onClick={() => setBrandVisible(true)}
+                        >
+                            Add brand
+                        </Button>
+
+                        <Button
+                            className="btn btn-primary m-3 p-4"
+                            style={{width: "300px"}}
+                            onClick={() => setBrandVisible(true)}
+                        >
+                            Delete brand
+                        </Button>
+                    </div>
+
+                    <div className={'d-flex'}>
+                        <Button
+                            className="btn btn-primary m-3 p-4"
+                            style={{width: "300px"}}
+                            onClick={() => setDeviceVisible(true)}
+                        >
+                            Add device
+                        </Button>
+
+                        <Button
+                            className="btn btn-primary m-3 p-4"
+                            style={{width: "300px"}}
+                            onClick={() => setDeviceVisible(true)}
+                        >
+                            Delete device
+                        </Button>
+                    </div>
+
 
                     <CreateType show={typeVisible} onHide={() => setTypeVisible(false)}/>
                     <CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)}/>

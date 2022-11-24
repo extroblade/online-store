@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
-import {Button, Form, Modal} from "react-bootstrap";
+import React, {useContext, useState} from 'react';
+import {Button, Dropdown, Form, Modal} from "react-bootstrap";
 import {createType} from "../../http/deviceAPI";
+import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
 
-const CreateType = ({show,onHide}) => {
-
+const CreateType = observer(({show,onHide}) => {
+    const {type} = useContext(Context)
     const [value, setValue] = useState('')
 
     const addType = () => {
@@ -25,6 +27,8 @@ const CreateType = ({show,onHide}) => {
             </Modal.Header>
             <Modal.Body>
                 <Form>
+
+
                     <Form.Control
                         className={"p-3"}
                         placeholder={"Enter type's name"}
@@ -35,10 +39,11 @@ const CreateType = ({show,onHide}) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant={"outline-success"} onClick={addType}>Add</Button>
+                <Button variant={"outline-danger"} onClick={addType}>Delete</Button>
                 <Button variant={"outline-danger"} onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
-};
+});
 
 export default CreateType;
