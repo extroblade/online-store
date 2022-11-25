@@ -1,14 +1,11 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {DEVICE_ROUTE} from "../utils/consts";
 
 const Items = observer(() => {
     const {device} = useContext(Context)
-    device.brands.map(t =>
-        {console.log(t.name)}
-    )
-    console.log(device.brands.name)
+
 
 
     return (
@@ -26,6 +23,7 @@ const Items = observer(() => {
                             <div className={'text-decoration-none text-primary'}>
                                 <h5 className="card-title mb-0">
                                     { device.name }
+
                                 </h5>
                             </div>
                             <div className={"d-flex flex-row"}>

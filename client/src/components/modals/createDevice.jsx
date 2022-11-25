@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {Button, Col, Dropdown, Form, Modal, Row} from "react-bootstrap";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
-import {createDevice, createType, fetchBrands, fetchTypes} from "../../http/deviceAPI";
+import {createDevice, fetchBrands, fetchTypes} from "../../http/deviceAPI";
 
 const CreateDevice = observer(({show, onHide}) => {
     const {device} = useContext(Context)
@@ -40,7 +40,7 @@ const CreateDevice = observer(({show, onHide}) => {
         formData.append('brandId', device.selectedBrand.id)
         formData.append('typeId', device.selectedType.id)
         formData.append('info', JSON.stringify(info))
-        createDevice(formData).then(data => onHide())
+        createDevice(formData).then(() => onHide())
     }
 
     return (

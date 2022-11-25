@@ -7,7 +7,7 @@ const CreateType = observer(({show,onHide}) => {
     const [value, setValue] = useState('')
 
     const addType = () => {
-        createType({name: value}).then(data => setValue(''))
+        createType({name: value}).then(() => setValue(''))
         onHide()
     }
 
