@@ -14,20 +14,25 @@ class TypeController {
         return res.json(types)
     }
 
+    async getOne(req,res){
+        const {id} = req.params
+        const type = await Type.findOne({where: {id}})
+        return res.json(type)
+    }
+
     async deleteOne(req,res, next) {
         try {
-            let {name} = req.body
-            await Type.destroy({where: {name}})
+            let {id} = req.params
+            await Type.destroy({where: {id}})
                 .then(() => {
-                    res.json(name)
+                    res.json(id)
                 })
-            if (!name){
+            if (!id){
                 return next(ApiError.internal("No type"))
             }
         } catch (e) {
             next(ApiError.badRequest(e))
         }
-
     }
 
 }

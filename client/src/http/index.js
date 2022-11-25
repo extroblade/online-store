@@ -19,5 +19,3 @@ export {
     $host,
     $authHost
 }
-
-//'http://localhost:5000/'

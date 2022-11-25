@@ -39,7 +39,6 @@ const CreateType = observer(({show,onHide}) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant={"outline-success"} onClick={addType}>Add</Button>
-                <Button variant={"outline-danger"} onClick={addType}>Delete</Button>
                 <Button variant={"outline-danger"} onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>

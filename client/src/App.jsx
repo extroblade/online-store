@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 
-import Navbar from "./components/Navbar";
+import NavbarStore from "./components/Navbar";
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import Footer from "./components/Footer";
@@ -18,25 +18,19 @@ const App = observer(() => {
         check().then(() => {
             user.setUser(true)
             user.setIsAuth(true)
-        }).finally( () => setLoading(false))
-    }, [])
-
-    useEffect(() => {
-
-        check().then(() => {
-            user.setUser(true)
-            user.setIsAuth(true)
-        }).finally( () => setLoading(false))
+        })
+             .finally( () => setLoading(false))
     }, [])
 
     if(loading){
-        return <Spinner animation={"grow"} className={"d-flex align-items-center justify-content-center"}/>
+        return <Spinner animation={"border"} />
     }
+
 
     return (
         <div>
             <BrowserRouter>
-                <Navbar/>
+                <NavbarStore/>
                 <AppRouter/>
                 <Footer/>
             </BrowserRouter>

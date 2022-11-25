@@ -21,13 +21,13 @@ const Navbar = observer(() => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container-fluid">
+            <div className="container-fluid px-0">
                 <a
-                    className="navbar-brand mx-2"
+                    className="navbar-brand mx-2 px-2"
                     style={{fontFamily: 'fonts.googleapis.com/css?family=Roboto sans-serif'}}
                     href={SHOP_ROUTE}
                 >
-                     StormStore
+                    StormStore
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,22 +35,20 @@ const Navbar = observer(() => {
                 </button>
                 {user.isAuth
                     ?
-                    <div className="collapse navbar-collapse" id="navbarNav">
+                    <div className="collapse navbar-collapse my-2" id="navbarNav">
                         <div className="navbar-nav" style={{marginLeft: "auto"}}>
-                            <a className="nav-link" href={BASKET_ROUTE}>Basket</a>
-                            <a className="nav-link" href={ADMIN_ROUTE}>Admin Panel</a>
+                            <a className="btn btn-dark" href={BASKET_ROUTE}>Basket</a>
+                            <a className="btn btn-dark" href={ADMIN_ROUTE}>Admin Panel</a>
                             <button
                                 className="btn btn-dark"
                                 onClick={() => logout()}
-
                             >
                                 Log out
                             </button>
                         </div>
                     </div>
                     :
-
-                    <div className="collapse navbar-collapse" id="navbarNav">
+                    <div className="collapse navbar-collapse my-2" id="navbarNav">
                         <div className="navbar-nav" style={{marginLeft: "auto"}}>
                             <a className="nav-link" href={LOGIN_ROUTE}>Log in</a>
                             <a className="nav-link" href={REGISTRATION_ROUTE}>Sign up</a>

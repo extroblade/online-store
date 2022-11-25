@@ -5,6 +5,7 @@ import {DEVICE_ROUTE} from "../utils/consts";
 
 const Items = observer(() => {
     const {device} = useContext(Context)
+    console.log(device.brands)
     return (
         <div className={"d-flex flex-row mb-3 flex-wrap"} >
             {device.devices.map(device =>
@@ -19,7 +20,7 @@ const Items = observer(() => {
                         <div className="card-body">
                             <div className={'text-decoration-none text-primary'}>
                                 <h5 className="card-title mb-0">
-                                     {device.name} {/* change to name*/}
+                                    {device.brands + device.name }
                                 </h5>
                             </div>
                             <div className={"d-flex flex-row"}>

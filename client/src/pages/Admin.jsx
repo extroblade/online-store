@@ -3,9 +3,11 @@ import {Button} from "react-bootstrap";
 import CreateType from "../components/modals/createType";
 import CreateBrand from "../components/modals/createBrand";
 import CreateDevice from "../components/modals/createDevice";
+import DeleteType from "../components/modals/deleteType";
 
 const Admin = () => {
-    const [typeVisible, setTypeVisible] = useState(false);
+    const [typeAddVisible, setTypeAddVisible] = useState(false);
+    const [typeDelVisible, setTypeDelVisible] = useState(false);
     const [brandVisible, setBrandVisible] = useState(false);
     const [deviceVisible, setDeviceVisible] = useState(false);
     return (
@@ -16,7 +18,7 @@ const Admin = () => {
                         <Button
                             className="btn btn-primary m-3 p-4"
                             style={{width: "300px"}}
-                            onClick={() => setTypeVisible(true)}
+                            onClick={() => setTypeAddVisible(true)}
                         >
                             Add type
                         </Button>
@@ -24,7 +26,7 @@ const Admin = () => {
                         <Button
                             className="btn btn-primary m-3 p-4"
                             style={{width: "300px"}}
-                            onClick={() => setTypeVisible(true)}
+                            onClick={() => setTypeDelVisible(true)}
                         >
                             Delete type
                         </Button>
@@ -67,7 +69,8 @@ const Admin = () => {
                     </div>
 
 
-                    <CreateType show={typeVisible} onHide={() => setTypeVisible(false)}/>
+                    <CreateType show={typeAddVisible} onHide={() => setTypeAddVisible(false)}/>
+                    <DeleteType show={typeDelVisible} onHide={() => setTypeDelVisible(false)}/>
                     <CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)}/>
                     <CreateDevice show={deviceVisible} onHide={() => setDeviceVisible(false)}/>
 

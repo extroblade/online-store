@@ -12,6 +12,7 @@ const TypeBar = observer(() => {
                 className="list-group-item list-group-item-action d-flex"
                 aria-current="true"
                 onClick={() => device.setSelectedType([])}
+                style={{cursor:'pointer'}}
             >
                 All
             </ListGroup.Item>
@@ -23,6 +24,7 @@ const TypeBar = observer(() => {
                         active={type.id === device.selectedType.id}
                         onClick={() => device.setSelectedType(type)}
                         key={type.id}
+                        style={{cursor:'pointer'}}
                     >
                         {type.name}
                     </ListGroup.Item>
@@ -30,6 +32,7 @@ const TypeBar = observer(() => {
             <hr className="border border-primary border-2 opacity-75"/>
 
             <ListGroup.Item
+                style={{cursor:'pointer'}}
                 className="list-group-item list-group-item-action d-flex p-3"
                 aria-current="true"
                 onClick={() => device.setSelectedBrand([])}
