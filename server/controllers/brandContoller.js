@@ -1,4 +1,4 @@
-const {Brand} = require('../models/models')
+const {Brand, Type} = require('../models/models')
 const ApiError = require("../error/ApiError");
 
 class BrandController {
@@ -13,21 +13,27 @@ class BrandController {
         return res.json(brands)
     }
 
+    async getOne(req,res){
+        const {id} = req.params
+        const brand = await Brand.findOne({where: {id}})
+        return res.json(brand)
+    }
+
     async deleteOne(req,res, next) {
         try {
-            let {name} = req.body
-            await Brand.destroy({where: {name}})
+            let {id} = req.params
+            await Brand.destroy({where: {id}})
                 .then(() => {
-                    res.json(name)
+                    res.json(id)
                 })
-            if (!name){
+            if (!id){
                 return next(ApiError.internal("No brand"))
             }
         } catch (e) {
             next(ApiError.badRequest(e))
         }
-
     }
+
 
 }
 

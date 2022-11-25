@@ -63,12 +63,13 @@ const CreateDevice = observer(({show, onHide}) => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {device.types.map(type =>
-                            <Dropdown.Item
-                                key={type.id}
-                                onClick={() => device.setSelectedType(type)}
-                            >
-                                {type.name}
-                            </Dropdown.Item>)}
+                                <Dropdown.Item
+                                    key={type.id}
+                                    onClick={() => device.setSelectedType(type)}
+                                >
+                                    {type.name}
+                                </Dropdown.Item>
+                            )}
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown className={"d-flex align-items-center justify-content-center"}>

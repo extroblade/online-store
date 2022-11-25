@@ -1,11 +1,9 @@
-import React, {useContext, useState} from 'react';
-import {Button, Dropdown, Form, Modal} from "react-bootstrap";
+import React, { useState} from 'react';
+import {Button, Form, Modal} from "react-bootstrap";
 import {createType} from "../../http/deviceAPI";
-import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 
 const CreateType = observer(({show,onHide}) => {
-    const {type} = useContext(Context)
     const [value, setValue] = useState('')
 
     const addType = () => {
@@ -27,8 +25,6 @@ const CreateType = observer(({show,onHide}) => {
             </Modal.Header>
             <Modal.Body>
                 <Form>
-
-
                     <Form.Control
                         className={"p-3"}
                         placeholder={"Enter type's name"}
