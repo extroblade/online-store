@@ -15,8 +15,9 @@ class UserController {
     async registration(req, res, next) {
         const {email, password, role} = req.body
         if (!email || !password) {
-            return next(ApiError.badRequest("Bad Registration or Pass"));
+            return next(ApiError.badRequest("No email or password. Try again!"));
         }
+
         const candidate = await User.findOne({where: {email}})
         if (candidate) {
             return next(ApiError.badRequest("User already exists"));
@@ -41,11 +42,13 @@ class UserController {
         const {email, password} = req.body
 
         const user = await User.findOne({where: {email}})
+
         if(!user){
             return next(ApiError.internal("User not found"))
         }
 
         let comparePass = bcrypt.compareSync(password, user.password)
+
         if (!comparePass){
             return next(ApiError.internal("Wrong password"))
         }
@@ -55,7 +58,7 @@ class UserController {
         return res.json({token})
     }
 
-    async isAuth(req,res, next){
+    async check (req,res, next){
         const token = generateJWT(req.user.id, req.user.email, req.user.role)
         return res.json({token})
     }

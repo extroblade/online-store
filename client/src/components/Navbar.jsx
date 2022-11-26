@@ -3,6 +3,7 @@ import {Context} from "../index";
 import {ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {observer} from "mobx-react-lite";
 import {useNavigate} from "react-router";
+import {logout} from "../http/userAPI";
 
 
 const Navbar = observer(() => {
@@ -10,17 +11,18 @@ const Navbar = observer(() => {
     const navigate = useNavigate()
 
 
-    const logout = () => {
-        if (window.confirm("Are you sure?")){
-            user.setUser(null)
-            user.setIsAuth(false)
-            navigate(SHOP_ROUTE)
+    const click = () => {
+        if (window.confirm("Are you sure?")) {
+            logout().then(() => {
+                user.setUser(false)
+                user.setIsAuth(false)
+                navigate(SHOP_ROUTE)
+            })
         }
-
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-4">
             <div className="container-fluid px-0">
                 <a
                     className="navbar-brand mx-2 px-2"
@@ -41,7 +43,7 @@ const Navbar = observer(() => {
                             <a className="btn btn-dark" href={ADMIN_ROUTE}>Admin Panel</a>
                             <button
                                 className="btn btn-dark"
-                                onClick={() => logout()}
+                                onClick={() => click()}
                             >
                                 Log out
                             </button>

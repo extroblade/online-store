@@ -5,12 +5,12 @@ const Footer = observer(() => {
 
     return (
 
-        <footer className="text-center text-lg-start bg-dark text-muted p4">
-            <div className="text-center p-4">
+        <nav className="navbar fixed-bottom navbar-light bg-dark">
+            <div className="text-center p-5">
                 © 2022 Copyright:
-                <a className="text-reset fw-bold" href="https://github.com/extroblade">extroblade</a>
+                <a className="text-center navbar-brand" href="https://github.com/extroblade">extroblade</a>
             </div>
-        </footer>
+        </nav>
     );
 });
 

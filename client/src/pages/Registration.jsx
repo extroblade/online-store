@@ -10,7 +10,7 @@ const Registration = observer(() => {
     const {user} = useContext(Context)
     const click = async () => {
         try{
-            let data = await registration(email, password)
+            await registration(email, password)
             user.setUser(user);
             user.setIsAuth(true)
             navigate(SHOP_ROUTE)
@@ -126,7 +126,7 @@ const Registration = observer(() => {
                                         <img
                                             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                                             className="img-fluid"
-                                            alt="Sample image"
+                                            alt="Registration"
                                         />
 
                                     </div>

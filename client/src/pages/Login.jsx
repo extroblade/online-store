@@ -4,20 +4,20 @@ import {REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {login} from "../http/userAPI";
 import {Context} from "../index";
 import {useNavigate} from "react-router";
-import {Spinner} from "react-bootstrap";
 
 
 const Login = observer(() => {
     const navigate = useNavigate()
     const {user} = useContext(Context)
+
     const click = async () => {
         try{
-            let data = await login(email, password)
+            await login(email, password)
             user.setUser(user);
             user.setIsAuth(true)
             navigate(SHOP_ROUTE)
         } catch (e) {
-            alert(e.response.data.message)
+            console.log(e.response.data.message)
         }
     }
 
@@ -94,7 +94,7 @@ const Login = observer(() => {
                                         <img
                                             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                                             className="img-fluid"
-                                            alt="Sample image"
+                                            alt="Registration"
                                         />
 
                                     </div>

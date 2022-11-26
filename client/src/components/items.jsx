@@ -5,8 +5,7 @@ import {DEVICE_ROUTE} from "../utils/consts";
 
 const Items = observer(() => {
     const {device} = useContext(Context)
-
-
+    console.log(device.types)
 
     return (
         <div className={"d-flex flex-row mb-3 flex-wrap"} >

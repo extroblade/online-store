@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 export default class DeviceStore {
-    constructor() {
+        constructor() {
         this._types = []
         this._brands = []
         this._devices = []
@@ -9,7 +9,7 @@ export default class DeviceStore {
         this._selectedBrand = {}
         this._page = 1
         this._totalCount = 0
-        this._limit = 5
+        this._limit = 20
         makeAutoObservable(this)
     }
 
