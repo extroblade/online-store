@@ -15,12 +15,12 @@ class UserController {
     async registration(req, res, next) {
         const {email, password, role} = req.body
         if (!email || !password) {
-            return next(ApiError.badRequest("No email or password. Try again!"));
+            return next( ApiError.badRequest("No email or password. Try again!") );
         }
 
         const candidate = await User.findOne({where: {email}})
         if (candidate) {
-            return next(ApiError.badRequest("User already exists"));
+            return next( ApiError.badRequest("User already exists") );
         }
         const hashPassword = await bcrypt.hash(password, 5)
 
@@ -29,10 +29,6 @@ class UserController {
             password: hashPassword,
             role,
         })
-
-        const basket = await Basket.create(
-            {userId: user.id}
-        )
 
         const token = generateJWT(user.id, user.email, user.role)
         return res.json({token})
@@ -43,15 +39,11 @@ class UserController {
 
         const user = await User.findOne({where: {email}})
 
-        if(!user){
-            return next(ApiError.internal("User not found"))
-        }
+        if (!user) return next(ApiError.internal("User not found"))
 
         let comparePass = bcrypt.compareSync(password, user.password)
 
-        if (!comparePass){
-            return next(ApiError.internal("Wrong password"))
-        }
+        if (!comparePass) return next(ApiError.internal("Wrong password"))
 
         const token = generateJWT(user.id, user.email, user.role)
 

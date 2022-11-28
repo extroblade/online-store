@@ -1,19 +1,28 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import {LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {registration} from "../http/userAPI";
 import {Context} from "../index";
 import {useNavigate} from "react-router";
+import {Alert} from "react-bootstrap";
 
 const Registration = observer(() => {
     const navigate = useNavigate()
     const {user} = useContext(Context)
+
+
     const click = async () => {
         try{
-            await registration(email, password)
-            user.setUser(user);
-            user.setIsAuth(true)
-            navigate(SHOP_ROUTE)
+            if (password===passwordRep) {
+                await registration(email, password)
+                user.setUser(user);
+                user.setIsAuth(true)
+                navigate(SHOP_ROUTE)
+            } else {
+                return (
+                    window.alert("passwords are not the same")
+                )
+            }
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -22,6 +31,7 @@ const Registration = observer(() => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordRep, setPasswordRep] = useState('');
 
     return (
         <section className="vh-100">
@@ -86,24 +96,26 @@ const Registration = observer(() => {
                                                 </div>
                                             </div>
 
-                                            {/*<div className="d-flex flex-row align-items-center mb-3">*/}
-                                            {/*    <i className="fas fa-key fa-lg  fa-fw"></i>*/}
-                                            {/*    <div className="form-outline flex-fill mb-0">*/}
-                                            {/*        <input*/}
-                                            {/*            type="password"*/}
-                                            {/*            id="form3Example4cd"*/}
-                                            {/*            className="form-control"*/}
-                                            {/*            placeholder={"Repeat your password"}*/}
+                                            <div className="d-flex flex-row align-items-center mb-3">
+                                                <i className="fas fa-key fa-lg  fa-fw"></i>
+                                                <div className="form-outline flex-fill mb-0">
+                                                    <input
+                                                        type="password"
+                                                        id="form3Example4cd"
+                                                        className="form-control"
+                                                        placeholder={"Repeat your password"}
+                                                        value = {passwordRep}
+                                                        onChange={e => setPasswordRep(e.target.value)}
 
-                                            {/*        />*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
+                                                    />
+                                                </div>
+                                            </div>
 
                                             <div className="form-check d-flex justify-content-center mb-5">
                                                 <input className="form-check-input me-2" type="checkbox" value=""
                                                        id="form2Example3c"/>
                                                 <label className="form-check-label" htmlFor="form2Example3">
-                                                    I agree all statements in <a href="#">Terms of service</a>
+                                                    I agree all statements in <a href="/" target={"_blank"}>Terms of service</a>
                                                 </label>
                                             </div>
 

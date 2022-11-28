@@ -5,13 +5,18 @@ import CreateBrand from "../components/modals/createBrand";
 import CreateDevice from "../components/modals/createDevice";
 import DeleteType from "../components/modals/deleteType";
 import DeleteBrand from "../components/modals/deleteBrand";
+import DeleteDevice from "../components/modals/deleteDevice";
 
 const Admin = () => {
+
     const [typeAddVisible, setTypeAddVisible] = useState(false);
     const [typeDelVisible, setTypeDelVisible] = useState(false);
     const [brandAddVisible, setAddBrandVisible] = useState(false);
     const [brandDelVisible, setDelBrandVisible] = useState(false);
-    const [deviceVisible, setDeviceVisible] = useState(false);
+    const [deviceAddVisible, setDeviceAddVisible] = useState(false);
+    const [deviceDelVisible, setDeviceDelVisible] = useState(false);
+
+
     return (
         <div className={"d-flex card align-items-center justify-content-center"} style={{height: "90vh"}} >
             <div className={""}>
@@ -56,7 +61,7 @@ const Admin = () => {
                         <Button
                             className="btn btn-primary m-3 p-4"
                             style={{width: "300px"}}
-                            onClick={() => setDeviceVisible(true)}
+                            onClick={() => setDeviceAddVisible(true)}
                         >
                             Add device
                         </Button>
@@ -64,7 +69,7 @@ const Admin = () => {
                         <Button
                             className="btn btn-primary m-3 p-4"
                             style={{width: "300px"}}
-                            onClick={() => setDeviceVisible(true)}
+                            onClick={() => setDeviceDelVisible(true)}
                         >
                             Delete device
                         </Button>
@@ -75,11 +80,11 @@ const Admin = () => {
                     <DeleteType show={typeDelVisible} onHide={() => setTypeDelVisible(false)}/>
                     <CreateBrand show={brandAddVisible} onHide={() => setAddBrandVisible(false)}/>
                     <DeleteBrand show={brandDelVisible} onHide={() => setDelBrandVisible(false)}/>
-                    <CreateDevice show={deviceVisible} onHide={() => setDeviceVisible(false)}/>
+                    <CreateDevice show={deviceAddVisible} onHide={() => setDeviceAddVisible(false)}/>
+                    <DeleteDevice show={deviceDelVisible} onHide={() => setDeviceDelVisible(false)}/>
 
                 </div>
             </div>
-
         </div>
     );
 };

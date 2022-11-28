@@ -7,8 +7,12 @@ const CreateBrand = ({show, onHide}) => {
     const [value, setValue] = useState('')
 
     const addBrand = () => {
-        createBrand({name: value}).then(data => setValue(''))
-        onHide()
+        if(value){
+            createBrand({name: value}).then(data => setValue(''))
+            onHide()
+        } else {
+            window.alert("No brand's name")
+        }
     }
 
     return (

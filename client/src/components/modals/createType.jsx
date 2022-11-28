@@ -1,14 +1,18 @@
 import React, { useState} from 'react';
 import {Button, Form, Modal} from "react-bootstrap";
-import {createType} from "../../http/deviceAPI";
+import {createBrand, createType} from "../../http/deviceAPI";
 import {observer} from "mobx-react-lite";
 
 const CreateType = observer(({show,onHide}) => {
     const [value, setValue] = useState('')
 
     const addType = () => {
-        createType({name: value}).then(() => setValue(''))
-        onHide()
+        if(value){
+            createType({name: value}).then(() => setValue(''))
+            onHide()
+        } else {
+            window.alert("No type's name")
+        }
     }
 
     return (

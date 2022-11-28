@@ -18,7 +18,7 @@ const Shop = observer(() => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
-    }, [])
+    }, [device])
 
     useEffect(() => {
         fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page , device.limit).then(data => {
@@ -31,11 +31,10 @@ const Shop = observer(() => {
         <div style={{minHeight: "75vh"}}>
             <div className={"container-fluid d-flex mt-2"}>
                 <TypeBar/>
-                <div className={" mt-5"}>
+                <div className={"m-5"} style={{height: "70vh"}}>
                     <div className={"d-flex flex-row mb-5 mx-5"}>
                         <Items/>
                     </div>
-
                 </div>
             </div>
             <PagesNum/>

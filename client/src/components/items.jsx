@@ -5,12 +5,13 @@ import {DEVICE_ROUTE} from "../utils/consts";
 
 const Items = observer(() => {
     const {device} = useContext(Context)
-    console.log(device.types)
 
     return (
         <div className={"d-flex flex-row mb-3 flex-wrap"} >
             {device.devices.map(device =>
-                <div className="card me-3 mb-3" style={{width: "12rem"}} key={device.id}>
+                device.typeId && device.brandId
+                    ?
+                <div className="card me-5 mb-5" style={{width: "16rem"}} key={device.id}>
                     <a href={DEVICE_ROUTE+'/'+device.id} style={{textDecoration: "none", color: "black"}}>
                         <img
                             src={process.env.REACT_APP_API_URL+device.img}
@@ -26,12 +27,12 @@ const Items = observer(() => {
                                 </h5>
                             </div>
                             <div className={"d-flex flex-row"}>
-                                <p className="card-text">{device.typeId}+rating: {device.rating}</p>
+                                <p className="card-text">{device.typeId} rating: {device.rating}</p>
                             </div>
                         </div>
                     </a>
                 </div>
-
+                    : <></>
             )}
         </div>
     );
