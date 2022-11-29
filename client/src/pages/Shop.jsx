@@ -28,7 +28,7 @@ const Shop = observer(() => {
     }, [device.page, device.selectedType, device.selectedBrand])
 
     return (
-        <div style={{minHeight: "75vh"}}>
+            <div style={{minHeight: "75vh"}}>
             <div className={"container-fluid d-flex mt-2"}>
                 <TypeBar/>
                 <div className={"m-5"} style={{height: "70vh"}}>

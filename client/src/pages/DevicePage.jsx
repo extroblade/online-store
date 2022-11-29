@@ -15,12 +15,14 @@ const DevicePage = () => {
     }, [])
 
     return (
-
-        <div className={"m-0 p-3"} style={{backgroundColor: "#f6f6f6", minHeight: "80vh"}}>
+    <div style={{backgroundColor: "#f6f6f6", minHeight: "80vh"}}>
+        <div className={" mx-5 p-3"}>
             <div className={"d-flex mx-4 my-3"}>
                 <div className={" flex-column"} style={{width: '81vw'}}>
                     <div>
-                        <h2>{device.name}</h2>
+                        <h2>
+                            {device.name}
+                        </h2>
                     </div>
                     <PictureDiv/>
                 </div>
@@ -32,6 +34,8 @@ const DevicePage = () => {
 
             </div>
         </div>
+    </div>
+
     );
 };
 
