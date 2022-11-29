@@ -13,7 +13,7 @@ const PictureDiv = () => {
     return (
         <div className={"d-flex card flex-row p-3"} style={{width: '100em'}}>
             <div className={"card"}>
-                <img src={"http://localhost:5000/"+device.img} style={{width: '35em'}} alt={"saa"}/>
+                <img src={process.env.REACT_APP_API_URL+device.img} style={{width: '35em'}} alt={"device"}/>
             </div>
             <div className={"d-flex flex-column mx-3"}>
                 <div className={"d-flex flex-row mx-3"}>
@@ -25,7 +25,7 @@ const PictureDiv = () => {
                         </div>
                     )}
                     &nbsp;
-                    <a href={"# characteristics"}>more info:</a>
+                    {device.info ? <a href={"# characteristics"}>more info:</a> : <div>No info</div> }
                 </div>
                 <div className={"card d-flex flex-column my-3 p-3"} style={{boxShadow: "0 8px 24px rgb(0 0 0 / 12%)"}}>
                     <div className={" d-flex flex-row "}>

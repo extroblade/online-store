@@ -10,6 +10,10 @@ const Navbar = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
 
+    // useEffect(() => {
+    //
+    // }, [user.isAuth])
+
 
     const click = () => {
         if (window.confirm("Are you sure?")) {

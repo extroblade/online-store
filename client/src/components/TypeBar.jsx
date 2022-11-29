@@ -17,7 +17,9 @@ const TypeBar = observer(() => {
                 All
             </ListGroup.Item>
 
-            {device.types.map(type =>
+            {device.typeId
+                ?
+                device.types.map(type =>
                     <ListGroup.Item
                         className="list-group-item list-group-item-action"
                         aria-current="true"
@@ -28,7 +30,12 @@ const TypeBar = observer(() => {
                     >
                         {type.name}
                     </ListGroup.Item>
-             )}
+             )
+                :
+                <p aria-hidden="true" className={"placeholder-wave"}>
+                    <span className="placeholder col-lg-12"></span>
+                </p>
+            }
             <hr className="border border-primary border-2 opacity-75"/>
 
             <ListGroup.Item
@@ -40,7 +47,9 @@ const TypeBar = observer(() => {
                 All
             </ListGroup.Item>
 
-                {device.brands.map(brand =>
+                {device.brandId
+                    ?
+                    device.brands.map(brand =>
                     <ListGroup.Item
                         style={{cursor:'pointer'}}
                         key={brand.id}
@@ -51,7 +60,11 @@ const TypeBar = observer(() => {
                     >
                         {brand.name}
                     </ListGroup.Item>
-                )}
+                )
+                :
+                    <p aria-hidden="true" className={"placeholder-wave"}>
+                        <span className="placeholder col-lg-12"></span>
+                    </p>}
         </ListGroup>
 
     );

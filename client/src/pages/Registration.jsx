@@ -1,10 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import {LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {registration} from "../http/userAPI";
 import {Context} from "../index";
 import {useNavigate} from "react-router";
-import {Alert} from "react-bootstrap";
 
 const Registration = observer(() => {
     const navigate = useNavigate()
@@ -98,7 +97,7 @@ const Registration = observer(() => {
 
                                             <div className="d-flex flex-row align-items-center mb-3">
                                                 <i className="fas fa-key fa-lg  fa-fw"></i>
-                                                <div className="form-outline flex-fill mb-0">
+                                                <div className="form-outline  flex-fill mb-0">
                                                     <input
                                                         type="password"
                                                         id="form3Example4cd"
