@@ -6,8 +6,9 @@ import CreateDevice from "../components/modals/createDevice";
 import DeleteType from "../components/modals/deleteType";
 import DeleteBrand from "../components/modals/deleteBrand";
 import DeleteDevice from "../components/modals/deleteDevice";
+import {observer} from "mobx-react-lite";
 
-const Admin = () => {
+const Admin = observer(() => {
 
     const [typeAddVisible, setTypeAddVisible] = useState(false);
     const [typeDelVisible, setTypeDelVisible] = useState(false);
@@ -15,7 +16,6 @@ const Admin = () => {
     const [brandDelVisible, setDelBrandVisible] = useState(false);
     const [deviceAddVisible, setDeviceAddVisible] = useState(false);
     const [deviceDelVisible, setDeviceDelVisible] = useState(false);
-
 
     return (
         <div className={"d-flex card align-items-center justify-content-center"} style={{height: "90vh"}} >
@@ -87,6 +87,6 @@ const Admin = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Admin;

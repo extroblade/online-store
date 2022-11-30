@@ -16,7 +16,7 @@ const DevicePage = () => {
 
     return (
     <div style={{backgroundColor: "#f6f6f6", minHeight: "80vh"}}>
-        <div className={" mx-5 p-3"}>
+        <div className={"mx-5 p-3"}>
             <div className={"d-flex mx-4 my-3"}>
                 <div className={" flex-column"} style={{width: '81vw'}}>
                     <div>

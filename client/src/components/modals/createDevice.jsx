@@ -14,7 +14,7 @@ const CreateDevice = observer(({show, onHide}) => {
     useEffect(()=> {
         fetchTypes().then(data => device.setTypes(data))
         fetchBrands().then(data => device.setBrands(data))
-    }, [])
+    }, [device])
 
     const addInfo = () => {
         setInfo([...info, {title: '', description: '', number: Date.now()}])
@@ -33,11 +33,11 @@ const CreateDevice = observer(({show, onHide}) => {
     }
 
     const addDevice = () => {
-        if(name && `${price}` && file && device.selectedBrand.id && device.selectedType.id && info){
+        if(name && price>0 && file && device.selectedBrand.id && device.selectedType.id && info){
             const formData = new FormData()
             formData.append('name', name)
             formData.append('price', `${price}`)
-            formData.append('img', file)
+            formData.append('img', `${file}`)
             formData.append('brandId', device.selectedBrand.id)
             formData.append('typeId', device.selectedType.id)
             formData.append('info', JSON.stringify(info))

@@ -6,6 +6,7 @@ const PictureDiv = () => {
     const [device, setDevice] = useState({info: []})
     const {id} = useParams()
 
+
     useEffect(()=> {
         fetchOneDevice(id).then(data => setDevice(data))
     }, [])
@@ -25,7 +26,7 @@ const PictureDiv = () => {
                         </div>
                     )}
                     &nbsp;
-                    {device.info ? <a href={"# characteristics"}>more info:</a> : <div>No info</div> }
+                    {device.info.length>0 ? <a href={"#characteristics"}>more info:</a> : <div>No info</div> }
                 </div>
                 <div className={"card d-flex flex-column my-3 p-3"} style={{boxShadow: "0 8px 24px rgb(0 0 0 / 12%)"}}>
                     <div className={" d-flex flex-row "}>

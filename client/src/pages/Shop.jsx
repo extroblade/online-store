@@ -18,15 +18,15 @@ const Shop = observer(() => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
-    }, [device.page, device.selectedType, device.selectedBrand, device.limit])
+    }, [device, device.page, device.selectedType, device.selectedBrand, device.limit])
 
 
 
     return (
-        <div style={{minHeight: "75vh"}}>
-            <div className={"container-fluid d-flex mt-2"}>
+        <div>
+            <div className={"d-flex mt-2"}>
                 <TypeBar/>
-                <div className={"m-5"} style={{height: "70vh"}}>
+                <div className={"m-5"}>
                     <div className={"d-flex flex-row mb-5 mx-5"}>
                         <Items/>
                     </div>

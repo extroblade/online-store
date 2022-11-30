@@ -40,9 +40,9 @@ export const removeOneDevice = async(id) => {
     return data
 }
 
-export const fetchDevices = async (typeId, brandId, page, limit= 5) => {
+export const fetchDevices = async (typeId, brandId, page, limit= 5, name) => {
     const {data} = await $host.get('api/device', {params: {
-            typeId, brandId, page, limit
+            typeId, brandId, page, limit, name
         }})
     return data
 }

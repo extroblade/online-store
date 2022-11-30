@@ -6,7 +6,7 @@ const path = require('path')
 class DeviceController {
     async create(req,res, next){
         try {
-            let {name, price, brandId, typeName, info} = req.body
+            let {name, price, brandId, typeId, info} = req.body
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
             await img.mv(path.resolve(__dirname, '..', 'static', fileName))
@@ -15,7 +15,7 @@ class DeviceController {
                 name,
                 price,
                 brandId,
-                typeName,
+                typeId,
                 img: fileName,
             })
 
@@ -73,8 +73,8 @@ class DeviceController {
 
     async deleteOne(req,res, next) {
         try {
-            let {name} = req.body
-            await Device.destroy({where: {name}})
+            let {id} = req.params
+            await Device.destroy({where: {id}})
                 .then(() => {
                     res.json(name)
                 })
