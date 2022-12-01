@@ -14,9 +14,6 @@ PERN stack, Bootstrap, JWT, axios
 
 ---
 
-### Features
-
-  Admin: login: asd password: asd;
   
 *You can add/delete types,brands,devices*
 
