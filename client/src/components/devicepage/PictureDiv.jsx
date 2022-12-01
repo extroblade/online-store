@@ -11,6 +11,15 @@ const PictureDiv = () => {
         fetchOneDevice(id).then(data => setDevice(data))
     }, [])
 
+    console.log(id)
+    const [cart, setCart] = useState([])
+
+    const addToCart = () => {
+        setCart(cart => [...cart, device]);
+        window.localStorage.setItem(`device${id}`, JSON.stringify(cart))
+    }
+
+
     return (
         <div className={"d-flex card flex-row p-3"} style={{width: '100em'}}>
             <div className={"card"}>
@@ -37,7 +46,7 @@ const PictureDiv = () => {
                             &lt;3
                             {/*<3*/}
                         </button>
-                        <button>
+                        <button onClick={() => addToCart()}>
                             Add to cart
                         </button>
                     </div>

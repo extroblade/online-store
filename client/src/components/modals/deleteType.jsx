@@ -10,13 +10,13 @@ const DeleteType = observer(({show,onHide}) => {
     const deleteType = () => {
         if(device?.selectedType?.name){
             if (window.confirm(`Are you sure you want to delete "${device?.selectedType?.name}"?`)){
-                removeOneType(device.selectedType.id).then(() => onHide())
+                removeOneType(device.selectedType.id)
+                    .then(device.selectedType.id = null)
+                    .then(() => onHide())
             } else onHide()
-        } else {
-            window.alert("No type selected")
-        }
-
+        } else window.alert("No type selected")
     }
+
 
     return (
         <Modal

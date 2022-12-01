@@ -20,9 +20,7 @@ const DeleteDevice = observer(({show,onHide}) => {
             if (window.confirm(`Are you sure you want to delete "${device.selectedDevice.name}"?`)){
                 removeOneDevice(device.selectedDevice.id).then(onHide())
             } else onHide()
-        } else {
-            window.alert("No device selected")
-        }
+        } else window.alert("No device selected")
     }
 
     return (

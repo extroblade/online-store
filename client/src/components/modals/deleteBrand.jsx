@@ -6,15 +6,15 @@ import {Button, Dropdown, Form, Modal} from "react-bootstrap";
 
 const DeleteBrand = observer(({show,onHide}) => {
     const {device} = useContext(Context)
+
     const deleteBrand = () => {
         if(device?.selectedBrand?.name) {
             if (window.confirm(`Are you sure you want to delete "${device.selectedBrand.name}"?`)) {
                 removeOneBrand(device.selectedBrand.id).then(() => onHide())
             } else onHide()
-        } else {
-            window.alert("No brand selected")
-        }
+        } else window.alert("No brand selected")
     }
+
     return (
         <Modal
             show={show}

@@ -18,6 +18,7 @@ const Login = observer(() => {
             navigate(SHOP_ROUTE)
         } catch (e) {
             console.log(e.response.data.message)
+        window.alert("Wrong email or password")
         }
     }
 
