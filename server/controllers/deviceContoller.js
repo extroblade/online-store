@@ -76,10 +76,10 @@ class DeviceController {
             let {id} = req.params
             await Device.destroy({where: {id}})
                 .then(() => {
-                    res.json(name)
+                    res.json(id)
                 })
-            if (!name){
-                return next(ApiError.internal("No device"))
+            if (!id){
+                return next(ApiError.internal("Device not found"))
             }
         } catch (e) {
             next(ApiError.badRequest(e))

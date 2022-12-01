@@ -12,7 +12,7 @@ const DeleteDevice = observer(({show,onHide}) => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
-    }, [device, device.name])
+    }, [])
 
 
     const deleteDevice = () => {

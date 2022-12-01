@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import {Button, Form, Modal} from "react-bootstrap";
 import {createBrand} from "../../http/deviceAPI";
 
-const CreateBrand = ({show, onHide}) => {
+const CreateBrand =     ({show, onHide}) => {
 
     const [value, setValue] = useState('')
 
     const addBrand = () => {
         if(value){
-            createBrand({name: value}).then(data => setValue(''))
+            createBrand({name: value}).then(() => setValue(''))
             onHide()
         } else {
             window.alert("No brand's name")

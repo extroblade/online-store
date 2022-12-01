@@ -20,7 +20,7 @@ const App = observer(() => {
             user.setIsAuth(true)
         })
              .finally( () => setLoading(false))
-    }, [])
+    }, [user.isAuth])
 
     if(loading) return <Spinner animation={"border"} />
 

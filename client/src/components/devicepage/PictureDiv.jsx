@@ -35,6 +35,7 @@ const PictureDiv = () => {
                         </div>
                         <button>
                             &lt;3
+                            {/*<3*/}
                         </button>
                         <button>
                             Add to cart

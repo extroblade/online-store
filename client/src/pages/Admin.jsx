@@ -18,72 +18,70 @@ const Admin = observer(() => {
     const [deviceDelVisible, setDeviceDelVisible] = useState(false);
 
     return (
-        <div className={"d-flex card align-items-center justify-content-center"} style={{height: "90vh"}} >
-            <div className={""}>
-                <div className="d-flex flex-column align-items-center justify-content-center" >
-                    <div className={'d-flex'}>
-                        <Button
-                            className="btn btn-primary m-3 p-4"
-                            style={{width: "300px"}}
-                            onClick={() => setTypeAddVisible(true)}
-                        >
-                            Add type
-                        </Button>
+        <div className={"d-flex card align-items-center justify-content-center"} style={{height: "67em"}} >
+            <div className="d-flex flex-column align-items-center justify-content-center" >
+                <div>
+                    <Button
+                        className="btn btn-primary m-3 p-4"
+                        style={{width: "300px"}}
+                        onClick={() => setTypeAddVisible(true)}
+                    >
+                        Add type
+                    </Button>
 
-                        <Button
-                            className="btn btn-primary m-3 p-4"
-                            style={{width: "300px"}}
-                            onClick={() => setTypeDelVisible(true)}
-                        >
-                            Delete type
-                        </Button>
-                    </div>
-
-                    <div className={'d-flex'}>
-                        <Button
-                            className="btn btn-primary m-3 p-4"
-                            style={{width: "300px"}}
-                            onClick={() => setAddBrandVisible(true)}
-                        >
-                            Add brand
-                        </Button>
-
-                        <Button
-                            className="btn btn-primary m-3 p-4"
-                            style={{width: "300px"}}
-                            onClick={() => setDelBrandVisible(true)}
-                        >
-                            Delete brand
-                        </Button>
-                    </div>
-
-                    <div className={'d-flex'}>
-                        <Button
-                            className="btn btn-primary m-3 p-4"
-                            style={{width: "300px"}}
-                            onClick={() => setDeviceAddVisible(true)}
-                        >
-                            Add device
-                        </Button>
-
-                        <Button
-                            className="btn btn-primary m-3 p-4"
-                            style={{width: "300px"}}
-                            onClick={() => setDeviceDelVisible(true)}
-                        >
-                            Delete device
-                        </Button>
-                    </div>
-
-
-                    <CreateType show={typeAddVisible} onHide={() => setTypeAddVisible(false)}/>
-                    <DeleteType show={typeDelVisible} onHide={() => setTypeDelVisible(false)}/>
-                    <CreateBrand show={brandAddVisible} onHide={() => setAddBrandVisible(false)}/>
-                    <DeleteBrand show={brandDelVisible} onHide={() => setDelBrandVisible(false)}/>
-                    <CreateDevice show={deviceAddVisible} onHide={() => setDeviceAddVisible(false)}/>
-                    <DeleteDevice show={deviceDelVisible} onHide={() => setDeviceDelVisible(false)}/>
-
+                    <Button
+                        className="btn btn-primary m-3 p-4"
+                        style={{width: "300px"}}
+                        onClick={() => setTypeDelVisible(true)}
+                    >
+                        Delete type
+                    </Button>
                 </div>
+
+                <div className={'d-flex'}>
+                    <Button
+                        className="btn btn-primary m-3 p-4"
+                        style={{width: "300px"}}
+                        onClick={() => setAddBrandVisible(true)}
+                    >
+                        Add brand
+                    </Button>
+
+                    <Button
+                        className="btn btn-primary m-3 p-4"
+                        style={{width: "300px"}}
+                        onClick={() => setDelBrandVisible(true)}
+                    >
+                        Delete brand
+                    </Button>
+                </div>
+
+                <div className={'d-flex'}>
+                    <Button
+                        className="btn btn-primary m-3 p-4"
+                        style={{width: "300px"}}
+                        onClick={() => setDeviceAddVisible(true)}
+                    >
+                        Add device
+                    </Button>
+
+                    <Button
+                        className="btn btn-primary m-3 p-4"
+                        style={{width: "300px"}}
+                        onClick={() => setDeviceDelVisible(true)}
+                    >
+                        Delete device
+                    </Button>
+                </div>
+
+
+                <CreateType show={typeAddVisible} onHide={() => setTypeAddVisible(false)}/>
+                <DeleteType show={typeDelVisible} onHide={() => setTypeDelVisible(false)}/>
+                <CreateBrand show={brandAddVisible} onHide={() => setAddBrandVisible(false)}/>
+                <DeleteBrand show={brandDelVisible} onHide={() => setDelBrandVisible(false)}/>
+                <CreateDevice show={deviceAddVisible} onHide={() => setDeviceAddVisible(false)}/>
+                <DeleteDevice show={deviceDelVisible} onHide={() => setDeviceDelVisible(false)}/>
+
             </div>
         </div>
     );
