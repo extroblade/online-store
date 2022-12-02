@@ -1,27 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router";
 import {fetchOneDevice} from "../../http/deviceAPI";
+import AddToBasket from "../modals/addToBasket";
 
 const PictureDiv = () => {
+
+
     const [device, setDevice] = useState({info: []})
+    const cart = [];
+    const [count, setCount] = useState(0)
     const {id} = useParams()
+    const [addToCartVisible, setAddToCartVisible] = useState(false);
 
 
     useEffect(()=> {
         fetchOneDevice(id).then(data => setDevice(data))
     }, [])
 
-    console.log(id)
-    const [cart, setCart] = useState([])
 
     const addToCart = () => {
-        setCart(cart => [...cart, device]);
-        window.localStorage.setItem(`device${id}`, JSON.stringify(cart))
+        setCount(count + 1)
+        setAddToCartVisible(true)
+        cart.push(device);
+        device.count = count
+        localStorage.setItem(`device${id}`, JSON.stringify(cart))
+        console.log(localStorage)
     }
 
 
     return (
-        <div className={"d-flex card flex-row p-3"} style={{width: '100em'}}>
+        <div className={"d-flex card flex-row p-3"}>
             <div className={"card"}>
                 <img src={process.env.REACT_APP_API_URL+device.img} style={{width: '35em'}} alt={"device"}/>
             </div>
@@ -63,6 +71,7 @@ const PictureDiv = () => {
 
                 <div className={"card"}> Adds </div>
             </div>
+            <AddToBasket show={addToCartVisible} onHide={() => setAddToCartVisible(false)} />
         </div>
     );
 };
