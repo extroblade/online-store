@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from "react-router";
 import {fetchOneDevice} from "../../http/deviceAPI";
 import AddToBasket from "../modals/addToBasket";
+import {Context} from "../../index";
 
 const PictureDiv = () => {
-
+    const {user} = useContext(Context)
 
     const [device, setDevice] = useState({info: []})
     const cart = [];
@@ -19,11 +20,15 @@ const PictureDiv = () => {
 
 
     const addToCart = () => {
-        setCount(count + 1)
-        setAddToCartVisible(true)
-        cart.push(device);
-        device.count = count
-        localStorage.setItem(`device${id}`, JSON.stringify(cart))
+        if(user.isAuth){
+            setCount(count + 1)
+            setAddToCartVisible(true)
+            cart.push(device);
+            device.count = count
+            localStorage.setItem(`device${id}`, JSON.stringify(cart))
+        } else {
+            window.alert('not authorized') //change to new modal
+        }
         console.log(localStorage)
     }
 

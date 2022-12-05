@@ -21,6 +21,4 @@ export const publicRoutes = [
     {path: REGISTRATION_ROUTE, element: <Registration/>, exact: true},
     {path: DEVICE_ROUTE+"/:id", element: <DevicePage/>, exact: true},
     {path: "*", element: <Navigate to="/" replace />, exact: true},
-
 ]
-// + '/:id'

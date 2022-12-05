@@ -5,7 +5,7 @@ import {observer} from "mobx-react-lite";
 
     const PagesLimit = observer(() => {
         const {device} = useContext(Context)
-        const limits = [1, 5, 10, 20, 50];
+        const limits = [5, 10, 50, 100, 1000];
     return (
 
         <Dropdown>
@@ -14,13 +14,13 @@ import {observer} from "mobx-react-lite";
             </Dropdown.Toggle>
             <Dropdown.Menu>
             {limits.map(limit =>
-                        <Dropdown.Item
-                            key={limit}
-                            active={device.limit === limit}
-                            onClick={() => device.setLimit(limit)}
-                        >
-                            {limit}
-                        </Dropdown.Item>
+                <Dropdown.Item
+                    key={limit}
+                    active={device.limit === limit}
+                    onClick={() => device.setLimit(limit)}
+                >
+                    {limit<1000 ? limit : "All"}
+                </Dropdown.Item>
             )}
             </Dropdown.Menu>
         </Dropdown>

@@ -16,7 +16,6 @@ class ApiError extends Error{
     static internal(message) {
         return new ApiError(500, message)
     }
-
 }
 
 module.exports = ApiError;

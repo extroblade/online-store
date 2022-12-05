@@ -2,15 +2,18 @@ import React, {useContext, useEffect} from 'react';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {DEVICE_ROUTE} from "../utils/consts";
-import {fetchBrands, fetchTypes} from "../http/deviceAPI";
+import {fetchDevices} from "../http/deviceAPI";
+import PlaceholderCard from "./storePage/placeholderCard";
 
 const Items = observer(() => {
     const {device} = useContext(Context)
 
     useEffect(()=> {
-        fetchTypes().then(data => device.setTypes(data))
-        fetchBrands().then(data => device.setBrands(data))
-    }, [])
+        fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page , device.limit, device.name).then(data => {
+            device.setDevices(data.rows)
+            device.setTotalCount(data.count)
+        })
+    }, [device])
 
     return (
         <div className={"d-flex flex-row mb-3 flex-wrap"} >
@@ -29,7 +32,7 @@ const Items = observer(() => {
                             <div className="card-body">
                                 <div className={'text-decoration-none text-primary'}>
                                     <h5 className="card-title mb-0">
-                                        {device.name }
+                                        {device.brandId} {device.name}
                                     </h5>
                                 </div>
                                 <div className={"d-flex flex-row"}>
@@ -40,21 +43,7 @@ const Items = observer(() => {
                     </div>
                 )
                 :
-                <div className="card " aria-hidden="true" style={{width: "10em", cursor: "wait"}}>
-                    <div className="card-body">
-                        <h5 className="card-title placeholder-glow">
-                            <span className="placeholder col-6"></span>
-                        </h5>
-                        <p className="card-text placeholder-glow">
-                            <span className="placeholder col-7"></span>
-                            <span className="placeholder col-4"></span>
-                            <span className="placeholder col-4"></span>
-                            <span className="placeholder col-6"></span>
-                            <span className="placeholder col-8"></span>
-                        </p>
-                        <button tabIndex="-1" className="btn btn-primary disabled placeholder col-6"></button>
-                    </div>
-                </div>
+                <PlaceholderCard/>
             }
         </div>
     );

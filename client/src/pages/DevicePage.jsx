@@ -31,7 +31,6 @@ const DevicePage = () => {
             <div className={"d-flex"} style={{width: '83vw'}} >
                 <BotSections/>
                 <PropsAndDesc/>
-
             </div>
         </div>
     </div>

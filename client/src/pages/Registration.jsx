@@ -18,9 +18,7 @@ const Registration = observer(() => {
                 user.setIsAuth(true)
                 navigate(SHOP_ROUTE)
             } else {
-                return (
-                    window.alert("passwords are not the same")
-                )
+                window.alert("Passwords are not the same")
             }
         } catch (e) {
             alert(e.response.data.message)
@@ -111,8 +109,12 @@ const Registration = observer(() => {
                                             </div>
 
                                             <div className="form-check d-flex justify-content-center mb-5">
-                                                <input className="form-check-input me-2" type="checkbox" value=""
-                                                       id="form2Example3c"/>
+                                                <input
+                                                    className="form-check-input me-2"
+                                                    type="checkbox"
+                                                    value=''
+                                                    id="form2Example3c"
+                                                />
                                                 <label className="form-check-label" htmlFor="form2Example3">
                                                     I agree all statements in <a href="/" target={"_blank"}>Terms of service</a>
                                                 </label>

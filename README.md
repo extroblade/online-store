@@ -1,20 +1,13 @@
+
 # ONLINE-STORE
 
-React online-store with client and server parts
+React online-store - PERN stack
 
-## Tech:
-
-PERN stack, Bootstrap, JWT, axios
-
-
-## Start
+### Start
 
  - cd server - npm run dev
  - cd client - npm start
 
 ---
 
-  
 *You can add/delete types,brands,devices*
-
-

@@ -6,12 +6,12 @@ import {observer} from "mobx-react-lite";
 
 const Basket = observer(() => {
     const {device} = useContext(Context)
-// [{id:device.id, count: count}, {id:device.id, count: count}]
 
     const cart = []
     let basketDevices = []
     let i = 0
 
+    console.log(localStorage)
     useEffect(() => {
         fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page , 20, device.name).then(data => {
             device.setDevices(data.rows)
@@ -86,7 +86,7 @@ const Basket = observer(() => {
                         </div>
                     </a>
                     <div>
-                        <button onClick={() => device.count+1}>+</button>
+                        <button onClick={() => device.count++}>+</button>
                         <button onClick={() => deleteFromCart(device.id)}>Delete</button>
                         <button onClick={() => device.count-1}>-</button>
                     </div>

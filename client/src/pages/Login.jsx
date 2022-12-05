@@ -18,7 +18,7 @@ const Login = observer(() => {
             navigate(SHOP_ROUTE)
         } catch (e) {
             console.log(e.response.data.message)
-        window.alert("Wrong email or password")
+            window.alert("Wrong email or password")
         }
     }
 
@@ -34,19 +34,18 @@ const Login = observer(() => {
                             <div className="card-body p-md-5">
                                 <div className="row justify-content-center">
                                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                                        <p className="text-center h1 fw-bold mb-0 mx-1 mx-md-4 mt-4 mx-4">Log in</p>
-                                        <p className="d-flex justify-content-center align-items-center mx-4 mb-3">
-                                            Don't have an account?
-                                            <a
-                                                href={REGISTRATION_ROUTE}
-                                                className="nav-link p-lg-2"
-                                            >Sign up</a>
+                                        <p className="text-center h1 fw-bold mb-0 mx-1 mx-md-4 mt-4 mx-4">
+                                            Log in
                                         </p>
 
+                                        <p className="d-flex justify-content-center align-items-center mx-4 mb-3">
+                                            Don't have an account?
+                                            <a href={REGISTRATION_ROUTE} className="nav-link p-lg-2">
+                                                Sign up
+                                            </a>
+                                        </p>
 
                                         <form className="mx-5 mx-md-5 ">
-
                                             <div className="d-flex flex-row align-items-center mb-2">
                                                 <i className="fas"></i>
                                                 <div className="form-outline flex-fill mb-0">
@@ -62,7 +61,6 @@ const Login = observer(() => {
                                             </div>
 
                                             <div className="d-flex flex-row align-items-center mb-3">
-                                                <i className="fas "></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <input
                                                         type="password"
@@ -75,7 +73,6 @@ const Login = observer(() => {
                                                 </div>
                                             </div>
 
-
                                             <div className="d-grid gap-2" >
                                                 <button
                                                     type="button"
@@ -85,19 +82,15 @@ const Login = observer(() => {
                                                     Login
                                                 </button>
                                             </div>
-
                                         </form>
-
                                     </div>
-                                    <div
-                                        className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
+                                    <div className="col-md-10 col-lg-6 col-xl-7">
                                         <img
                                             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                                             className="img-fluid"
-                                            alt="Registration"
+                                            alt="Login"
                                         />
-
                                     </div>
                                 </div>
                             </div>

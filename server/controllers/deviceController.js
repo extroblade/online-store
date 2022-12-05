@@ -30,13 +30,10 @@ class DeviceController {
                 )
             }
 
-
-
             return res.json(device)
         } catch (e){
             next(ApiError.badRequest(e))
         }
-
     }
 
     async getAll(req,res){

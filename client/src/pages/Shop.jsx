@@ -32,7 +32,7 @@ const Shop = observer(() => {
                     </div>
                 </div>
             </div>
-            <div className={"d-flex justify-content-center"}>
+            <div className={"d-flex justify-content-center mb-5"}>
                 <PagesNum/>
                 <PagesLimit/>
             </div>

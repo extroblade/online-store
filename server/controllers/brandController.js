@@ -23,9 +23,7 @@ class BrandController {
         try {
             let {id} = req.params
             await Brand.destroy({where: {id}})
-                .then(() => {
-                    res.json(id)
-                })
+                .then(() => res.json(id))
             if (!id){
                 return next(ApiError.internal("No brand"))
             }
@@ -33,8 +31,6 @@ class BrandController {
             next(ApiError.badRequest(e))
         }
     }
-
-
 }
 
 module.exports = new BrandController()

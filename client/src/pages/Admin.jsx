@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Button} from "react-bootstrap";
 import CreateType from "../components/modals/createType";
 import CreateBrand from "../components/modals/createBrand";
 import CreateDevice from "../components/modals/createDevice";
@@ -7,81 +6,40 @@ import DeleteType from "../components/modals/deleteType";
 import DeleteBrand from "../components/modals/deleteBrand";
 import DeleteDevice from "../components/modals/deleteDevice";
 import {observer} from "mobx-react-lite";
+import FunctionButtons from "../components/adminPage/functionButtons";
 
 const Admin = observer(() => {
     const [typeAddVisible, setTypeAddVisible] = useState(false);
     const [typeDelVisible, setTypeDelVisible] = useState(false);
-    const [brandAddVisible, setAddBrandVisible] = useState(false);
-    const [brandDelVisible, setDelBrandVisible] = useState(false);
+    const [brandAddVisible, setBrandAddVisible] = useState(false);
+    const [brandDelVisible, setBrandDelVisible] = useState(false);
     const [deviceAddVisible, setDeviceAddVisible] = useState(false);
     const [deviceDelVisible, setDeviceDelVisible] = useState(false);
 
-
     return (
-        <div className={"d-flex card align-items-center justify-content-center"} style={{height: "67em"}} >
-            <div className="d-flex flex-column align-items-center justify-content-center" >
+        <div className={"d-flex card align-items-center justify-content-center"} style={{height: "80vh"}}>
+            <div className="d-flex flex-column">
                 <div>
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setTypeAddVisible(true)}
-                    >
-                        Add type
-                    </Button>
-
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setTypeDelVisible(true)}
-                    >
-                        Delete type
-                    </Button>
+                    <FunctionButtons onClickValue={setTypeAddVisible} text={"Add type"}/>
+                    <FunctionButtons onClickValue={setTypeDelVisible} text={"Delete type"}/>
                 </div>
 
-                <div className={'d-flex'}>
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setAddBrandVisible(true)}
-                    >
-                        Add brand
-                    </Button>
-
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setDelBrandVisible(true)}
-                    >
-                        Delete brand
-                    </Button>
+                <div>
+                    <FunctionButtons onClickValue={setBrandAddVisible} text={"Add brand"}/>
+                    <FunctionButtons onClickValue={setBrandDelVisible} text={"Delete brand"}/>
                 </div>
 
-                <div className={'d-flex'}>
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setDeviceAddVisible(true)}
-                    >
-                        Add device
-                    </Button>
-
-                    <Button
-                        className="btn btn-primary m-3 p-4"
-                        style={{width: "300px"}}
-                        onClick={() => setDeviceDelVisible(true)}
-                    >
-                        Delete device
-                    </Button>
+                <div>
+                    <FunctionButtons onClickValue={setDeviceAddVisible} text={"Add device"}/>
+                    <FunctionButtons onClickValue={setDeviceDelVisible} text={"Delete device"}/>
                 </div>
-
 
                 <CreateType show={typeAddVisible} onHide={() => setTypeAddVisible(false)}/>
                 <DeleteType show={typeDelVisible} onHide={() => setTypeDelVisible(false)}/>
-                <CreateBrand show={brandAddVisible} onHide={() => setAddBrandVisible(false)}/>
-                <DeleteBrand show={brandDelVisible} onHide={() => setDelBrandVisible(false)}/>
+                <CreateBrand show={brandAddVisible} onHide={() => setBrandAddVisible(false)}/>
+                <DeleteBrand show={brandDelVisible} onHide={() => setBrandDelVisible(false)}/>
                 <CreateDevice show={deviceAddVisible} onHide={() => setDeviceAddVisible(false)}/>
                 <DeleteDevice show={deviceDelVisible} onHide={() => setDeviceDelVisible(false)}/>
-
             </div>
         </div>
     );
