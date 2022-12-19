@@ -43,12 +43,16 @@ const DeleteDevice = observer(({show,onHide}) => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {device.devices.map(item =>
-                                <Dropdown.Item
-                                    key={"d"+item.id}
-                                    onClick={() => device.setSelectedDevice(item)}
-                                >
-                                    {item.name}
-                                </Dropdown.Item>
+                                device.brands.map(brand =>
+                                    brand.id===item.brandId &&
+                                    <Dropdown.Item
+                                        key={"d"+item.id}
+                                        onClick={() => device.setSelectedDevice(item)}
+                                    >
+                                        {brand.name} {item.name}
+                                    </Dropdown.Item>
+                                )
+
                             )}
                         </Dropdown.Menu>
                     </Dropdown>

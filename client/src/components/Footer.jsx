@@ -2,7 +2,11 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="navbar fixed-bottom navbar-light bg-dark">mockbar</footer>
+        <footer className="fixed-bottom bg-dark p-1">
+            <div>
+                mockbar
+            </div>
+        </footer>
     );
 };
 

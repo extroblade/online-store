@@ -27,8 +27,8 @@ const Login = observer(() => {
 
     return (
         <section style={{height: "95vh"}}>
-            <div className="container h-100">
-                <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="container h-100 ">
+                <div className="row d-flex justify-content-center align-items-center h-100  ">
                     <div className="col-lg-12 col-xl-11 ">
                         <div className="card text-black" style={{borderRadius: '25px'}}>
                             <div className="card-body p-md-5">
@@ -85,9 +85,9 @@ const Login = observer(() => {
                                         </form>
                                     </div>
 
-                                    <div className="col-md-10 col-lg-6 col-xl-7">
+                                    <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                                         <img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                            src="https://media.istockphoto.com/id/485585797/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B0%D0%BF%D0%B5%D0%BB%D1%8C%D1%81%D0%B8%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9-%D1%81%D0%BE%D0%BA-%D0%B1%D1%80%D1%8B%D0%B7%D0%B3.jpg?s=1024x1024&w=is&k=20&c=lu_rCaqK0JWxbbW1da_CYha_ShW-67TbYyU_Upp4nuQ="
                                             className="img-fluid"
                                             alt="Login"
                                         />
