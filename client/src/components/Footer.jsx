@@ -2,10 +2,11 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="fixed-bottom bg-dark p-1">
-            <div>
-                mockbar
-            </div>
+        <footer>
+            <a href={"https://github.com/extroblade"} target="_blank">
+                @extroblade
+            </a>
+
         </footer>
     );
 };

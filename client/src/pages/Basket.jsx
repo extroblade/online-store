@@ -22,7 +22,9 @@ const Basket = observer(() => {
 
     const deleteFromCart = (id) => {
         if (window.confirm('Are you sure you want to delete?')){
-            localStorage.removeItem(`device${id}`)
+            cart.forEach(() => {
+                localStorage.removeItem(`device${id}`)
+            })
         }
     }
 
@@ -43,13 +45,14 @@ const Basket = observer(() => {
             basketDevices = []
         })
     }
+    function totalPriceCount(){
+        let totalPrice = 0
 
-
-    let totalPrice = 0
-
-    basketDevices.map(device => {
-        totalPrice += device.price*(device.count+1);
-    })
+        basketDevices.map(device => {
+            totalPrice += device.price*(device.count+1);
+        })
+        return totalPrice;
+    }
 
     return (
         <div className={"d-flex flex-column align-items-center m-5"}>
@@ -60,7 +63,7 @@ const Basket = observer(() => {
             </div>
             {basketDevices &&
                 <div>
-                TotalPrice - {totalPrice}
+                TotalPrice - {totalPriceCount()}
                 </div>
             }
 

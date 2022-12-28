@@ -6,6 +6,7 @@ import PagesNum from "../components/PagesNum";
 import {Context} from "../index";
 import {fetchBrands, fetchDevices, fetchTypes} from "../http/deviceAPI";
 import PagesLimit from "../components/PagesLimit";
+import BrandBar from "../components/BrandBar";
 
 const Shop = observer(() => {
 
@@ -23,9 +24,13 @@ const Shop = observer(() => {
 
 
     return (
-        <div>
+        <div className={"shop"}>
             <div className={"d-flex mt-2"}>
-                <TypeBar/>
+                <div className={"bars__left"}>
+                    <TypeBar/>
+                    <hr className="hr"/>
+                    <BrandBar/>
+                </div>
                 <div className={"m-5"}>
                     <div className={"d-flex flex-row mb-5 mx-5"}>
                         <Items/>

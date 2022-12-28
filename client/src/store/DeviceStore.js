@@ -27,6 +27,7 @@ export default class DeviceStore {
     }
 
     setLimit(limit){
+        this.setPage(1)
         this._limit = limit
     }
 

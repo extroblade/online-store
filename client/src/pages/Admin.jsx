@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import CreateType from "../components/modals/createType";
 import CreateBrand from "../components/modals/createBrand";
 import CreateDevice from "../components/modals/createDevice";
@@ -7,6 +7,8 @@ import DeleteBrand from "../components/modals/deleteBrand";
 import DeleteDevice from "../components/modals/deleteDevice";
 import {observer} from "mobx-react-lite";
 import FunctionButtons from "../components/adminPage/functionButtons";
+import {fetchBrands, fetchDevices, fetchTypes} from "../http/deviceAPI";
+import {Context} from "../index";
 
 const Admin = observer(() => {
     const [typeAddVisible, setTypeAddVisible] = useState(false);
@@ -15,6 +17,16 @@ const Admin = observer(() => {
     const [brandDelVisible, setBrandDelVisible] = useState(false);
     const [deviceAddVisible, setDeviceAddVisible] = useState(false);
     const [deviceDelVisible, setDeviceDelVisible] = useState(false);
+    const {device} = useContext(Context)
+
+    useEffect(()=> {
+        fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page , 20, device.name).then(data => {
+            device.setDevices(data.rows)
+            device.setTotalCount(data.count)
+        })
+        fetchTypes().then(data => device.setTypes(data))
+        fetchBrands().then(data => device.setBrands(data))
+    }, [device])
 
     return (
         <div className={"d-flex card align-items-center justify-content-center"} style={{height: "80vh"}}>

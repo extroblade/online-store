@@ -14,15 +14,14 @@ const App = observer(() => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-
         check().then(() => {
             user.setUser(true)
             user.setIsAuth(true)
         })
-             .finally( () => setLoading(false))
+            .finally( () => setLoading(false))
     }, [user.isAuth])
 
-    if(loading) return <Spinner animation={"border"} />
+    if (loading) return <Spinner animation={"border"} />
 
     return (
         <BrowserRouter>

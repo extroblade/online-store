@@ -27,27 +27,6 @@ const TypeBar = observer(() => {
                     {type.name}
                 </ListGroup.Item>
             )}
-            <hr className="border border-primary border-2 opacity-75"/>
-
-            <ListGroup.Item
-                style={{cursor:'pointer'}}
-                className="list-group-item list-group-item-action d-flex"
-                onClick={() => device.setSelectedBrand([])}
-            >
-                All
-            </ListGroup.Item>
-
-                {device.brands.map(brand =>
-                    <ListGroup.Item
-                        style={{cursor:'pointer'}}
-                        key={"b"+brand.id}
-                        className="list-group-item list-group-item-action"
-                        onClick={() => device.setSelectedBrand(brand)}
-                        active={brand.id === device.selectedBrand.id }
-                    >
-                        {brand.name}
-                    </ListGroup.Item>
-                )}
         </ListGroup>
 
     );

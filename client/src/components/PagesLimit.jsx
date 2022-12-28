@@ -10,7 +10,7 @@ import {observer} from "mobx-react-lite";
     return (
         <Dropdown>
             <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                {device.limit!==device.totalCount ? device.limit : device.totalCount}
+                {device.limit}
             </Dropdown.Toggle>
             <Dropdown.Menu>
             {limits.map(limit =>
